@@ -20,9 +20,9 @@ plot(x = dat$datetime, y = dat$Voltage, type = "l", ylab="Voltage", xlab = "")
 plot(x = dat$datetime, y = dat$Sub_metering_1, type = "l", ylab="Energy sub metering", xlab = "")
 lines(x = dat$datetime, y = dat$Sub_metering_2, col = "red")
 lines(x = dat$datetime, y = dat$Sub_metering_3, col = "blue")
-legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), box.lwd = 0, lty=1, lwd=2.5, col = c("black", "red", "blue"))
+legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), box.lwd = 0, lty = 1, lwd = 2.5, col = c("black", "red", "blue"))
 
 # Plot Global reactive power vs datetime
-plot(x = dat$datetime, y = dat$Global_reactive_power, type = "l", ylab="Voltage", xlab = "")
+plot(x = dat$datetime, y = dat$Global_reactive_power, type = "l", ylab="Global reactive power", xlab = "")
 
 dev.off()
