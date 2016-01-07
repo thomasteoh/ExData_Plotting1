@@ -8,6 +8,8 @@ dat$datetime <- strptime(x = paste(dat$Date, dat$Time, sep = " "), format = "%d/
 
 dat$Global_active_power <- as.numeric(dat$Global_active_power) # Global Active Power in KW
 
-png("plot1.png", width=504, height=504) # Create a PNG with specified dimensions
-hist(dat$Global_active_power, col="red", main="Global Active Power", xlab="Global Active Power (kilowatts)") # Change colour of bars to red, title and x labels
+png("plot2.png", width=504, height=504) # Create a PNG with specified dimensions
+# hist(dat$Global_active_power, col="red", main="Global Active Power", xlab="Global Active Power (kilowatts)") # Change colour of bars to red, title and x labels
+plot(x = dat$datetime, y = dat$Global_active_power)
+
 dev.off()
