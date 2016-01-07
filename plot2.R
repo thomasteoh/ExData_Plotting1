@@ -1,16 +1,18 @@
+# Set local working parameters, unzip data file and read it in
 setwd("/media/sf_Dropbox/Technology/R/coursera/4 Exploratory Data Analysis/assignment1/ExData_Plotting1/")
 dat.file <- unz("./data/exdata-data-household_power_consumption.zip", "household_power_consumption.txt")
-dat.0 <- read.table(dat.file, nrows = 800000, header = TRUE, quote = "\"", stringsAsFactors = FALSE, sep = ";", dec = ".") # importing dataset, nrows to keep it a bit smaller
+dat.0 <- read.table(dat.file, nrows = 800000, header = TRUE, quote = "\"", stringsAsFactors = FALSE, sep = ";", dec = ".") # nrows to keep it a bit smaller (size determined through looking at dataset - needs to encompass our dates)
 
-dat <- dat.0[dat.0$Date %in% c("1/2/2007", "2/2/2007"),] # subsetting only the data that is relevant to our interests
+# Subset only the data that is relevant to our interest
+dat <- dat.0[dat.0$Date %in% c("1/2/2007", "2/2/2007"),]
 
-dat$datetime <- strptime(x = paste(dat$Date, dat$Time, sep = " "), format = "%d/%m/%Y %H:%M:%S") # Converting to date and time
+# Converting date and time values
+dat$datetime <- strptime(x = paste(dat$Date, dat$Time, sep = " "), format = "%d/%m/%Y %H:%M:%S") 
 
-dat$Global_active_power <- as.numeric(dat$Global_active_power) # Global Active Power in KW
+# Global Active Power as a numeric value
+dat$Global_active_power <- as.numeric(dat$Global_active_power) 
 
-png("plot2.png", width=504, height=504) # Create a PNG with specified dimensions
-# hist(dat$Global_active_power, col="red", main="Global Active Power", xlab="Global Active Power (kilowatts)") # Change colour of bars to red, title and x labels
-plot(x = dat$datetime, y = dat$Global_active_power, type = "l", ylab="Global Active Power (kilowatts)", xlab = "")
-
-
+# Create a PNG with specified dimensions
+png("plot2.png", width = 504, height = 504)
+plot(x = dat$datetime, y = dat$Global_active_power, type = "l", ylab = "Global Active Power (kilowatts)", xlab = "") # Plotting Global active power against time, no label on x axis
 dev.off()
